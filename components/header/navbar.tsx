@@ -16,9 +16,11 @@ function Navbar() {
   if (!user) return null;
 
   return (
-    <header className="bg-foreground">
-      <nav className="flex items-center justify-between p-4">
-        <Button onClick={handleSignOut}>Logout</Button>{" "}
+    <header className="border-primary border-b border-dashed">
+      <nav className="flex h-22.5 items-center justify-between px-4">
+        <Button onClick={handleSignOut} size={"sm"}>
+          Logout
+        </Button>{" "}
         <div className="text-background">{user?.email}</div>
       </nav>
     </header>

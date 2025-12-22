@@ -1,3 +1,4 @@
+import Footer from "@/components/dashboard/footer";
 import Providers from "@/components/global/providers";
 import Navbar from "@/components/header/navbar";
 import { cn } from "@/lib/utils";
@@ -24,12 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "antialiased")}>
+      <body
+        className={cn(inter.className, "flex min-h-dvh flex-col antialiased")}
+      >
         <Providers>
-          <main>
-            <Navbar />
-            {children}
-          </main>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
