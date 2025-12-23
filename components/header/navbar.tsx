@@ -21,21 +21,23 @@ function Navbar() {
 
   return (
     <header className="border-primary bg-background/50 sticky top-0 z-50 border-b border-dashed px-4 backdrop-blur-3xl">
-      <nav className="mx-auto flex h-22.5 max-w-5xl items-center justify-center gap-4">
-        {navLinks.map(({ href, icon }) => (
-          <Link
-            key={href}
-            href={href}
-            className={cn(pathname === href && "text-primary")}
-          >
-            {icon}
-          </Link>
-        ))}
-
+      <nav className="mx-auto flex h-22.5 max-w-5xl items-center justify-between gap-2">
+        <h2 className="text-2xl font-extralight">NexletterAI</h2>
+        <div className="flex items-center gap-2">
+          {navLinks.map(({ href, icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={cn(pathname === href && "text-primary")}
+            >
+              {icon}
+            </Link>
+          ))}
+        </div>
         <Button
           onClick={handleSignOut}
           size={"sm"}
-          className="ml-auto transition-all duration-200 ease-in-out hover:translate-y-0.5"
+          className="transition-all duration-200 ease-in-out hover:translate-y-0.5"
         >
           Logout
         </Button>

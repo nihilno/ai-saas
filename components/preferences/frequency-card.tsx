@@ -16,7 +16,7 @@ function FrequencyCard() {
   const { selectedFrequency, setSelectedFrequency } = usePreferences();
 
   return (
-    <Card className="mt-16 md:mt-0 md:h-full">
+    <Card className="mt-16 md:mt-0 md:flex-1">
       <CardHeader className="border-b border-dashed text-center text-xl font-bold sm:text-2xl">
         <CardTitle>Daily Frequency</CardTitle>
         <CardDescription className="mt-1.5 font-normal">

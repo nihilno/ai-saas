@@ -13,8 +13,6 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     >
-      <div className="bg-primary/20 absolute -top-4 -right-4 h-24 w-24 rotate-12 rounded-xl" />
-      <div className="bg-primary/30 absolute -top-6 -right-6 h-24 w-24 rotate-12 rounded-xl" />
       <div className="relative z-10 px-6 pt-6 pb-6">{props.children}</div>
     </div>
   );

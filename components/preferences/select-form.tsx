@@ -60,13 +60,13 @@ function SelectForm() {
 
   return (
     <form
-      className="grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2"
+      className="grid grid-cols-1 items-stretch gap-8 md:mt-16 md:grid-cols-2"
       onSubmit={handleSavePreferences}
     >
       <div>
         <CategoriesCard />
       </div>
-      <div className="flex h-full! flex-col justify-between gap-8">
+      <div className="flex flex-col gap-8">
         <FrequencyCard />
         <Summary isLoading={isLoading} />
       </div>
