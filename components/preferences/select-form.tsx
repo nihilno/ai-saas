@@ -42,6 +42,7 @@ function SelectForm() {
 
       if (!response.ok) {
         toast.error("Failed to save preferences.");
+        return;
       }
 
       toast.success("Success!", {

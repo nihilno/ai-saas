@@ -1,3 +1,4 @@
+import { inngest } from "@/lib/inngest/client";
 import { createClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -36,6 +37,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json(
+      {
+        error: "Valid email address is required.",
+      },
+      { status: 400 },
+    );
+  }
+
   const { error: upsertError } = await supabase
     .from("user_preferences")
     .upsert(
@@ -44,7 +54,7 @@ export async function POST(request: NextRequest) {
     );
 
   if (upsertError) {
-    console.error(upsertError);
+    console.error("Failed to save user preferences:", upsertError.message);
     return NextResponse.json(
       {
         error: "Failed to save preferences.",
@@ -52,6 +62,11 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   }
+
+  const {} = await inngest.send({
+    name: "newsletter.schedule",
+    data: {},
+  });
 
   return NextResponse.json({
     success: true,

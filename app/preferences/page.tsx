@@ -1,5 +1,10 @@
 import Title from "@/components/dashboard/title";
 import SelectForm from "@/components/preferences/select-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Preferences",
+};
 
 export default function SelectPage() {
   return (

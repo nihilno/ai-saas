@@ -1,6 +1,11 @@
 import Cards from "@/components/dashboard/cards";
 import Explanation from "@/components/dashboard/explanation";
 import Title from "@/components/dashboard/title";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 export default function DashboardPage() {
   return (

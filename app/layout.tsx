@@ -12,10 +12,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - AI SaaS",
-    default: "Dashboard | AI SaaS",
+    template: "%s | Nexletter",
+    default: "Dashboard | Nexletter",
   },
-  description: "AI Saas built with Next.js and OpenAI",
+  description: "Nexletter built with Next.js and OpenAI",
 };
 
 export default function RootLayout({

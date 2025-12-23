@@ -11,41 +11,42 @@ export default inngest.createFunction(
     });
 
     // ai summary
-    // ai summary
-    const summary = await step.run("summarize-news", async () => {
-      try {
-        return await step.ai.infer("summarize-news", {
-          model: step.ai.models.openai({ model: "gpt-4o" }),
-          body: {
-            messages: [
-              {
-                role: "system",
-                content: `Act as an expert newsletter editor and create a personalized newsletter for me. 
-                Your goal is to produce a concise, engaging summary that: 
-                - Highlights the most important stories
-                - Provides context and insights
-                - Uses a friendly, conversational tone
-                - Is well‑structured with clear sections
-                - Keeps me informed and engaged
-                Format the response as a proper newsletter with a title and organized content. 
-                Make it email‑friendly with clear sections and engaging subject lines.`,
-              },
-              {
-                role: "user",
-                content: `Create a newsletter summary for these articles from the past week.
-                Categories requested: ${categories.join(",")}
-                
-                Articles: 
-                ${allArticles.map((article: any, index: number) => `${index + 1}. ${article.title}\n ${article.description}\n Source: ${article.url}\n`).join("\n")}`,
-              },
-            ],
+    const summary = await step.ai.infer("summarize-news", {
+      model: step.ai.models.openai({ model: "gpt-4o" }),
+      body: {
+        messages: [
+          {
+            role: "system",
+            content: `You are an expert newsletter editor creating a personalized newsletter. 
+              Write a concise, engaging summary that:
+              - Highlights the most important stories
+              - Provides context and insights
+              - Uses a friendly, conversational tone
+              - Is well-structured with clear sections
+              - Keeps the reader informed and engaged
+              Format the response as a proper newsletter with a title and organized content.
+              Make it email-friendly with clear sections and engaging subject lines.`,
           },
-        });
-      } catch (error) {
-        console.error("Failed to generate AI summary:", error);
-        throw new Error("Newsletter generation failed");
-      }
+          {
+            role: "user",
+            content: `Create a newsletter summary for these articles from the past week. 
+              Categories requested: ${event.data.categories.join(", ")}
+              
+              Articles:
+              ${allArticles
+                .map(
+                  (article: any, index: number) =>
+                    `${index + 1}. ${article.title}\n   ${
+                      article.description
+                    }\n   Source: ${article.url}\n`,
+                )
+                .join("\n")}`,
+          },
+        ],
+      },
     });
+
     console.log(summary.choices[0].message.content);
+    return {};
   },
 );
