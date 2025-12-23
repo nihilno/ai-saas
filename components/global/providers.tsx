@@ -2,6 +2,7 @@
 
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/contexts/auth-context";
+import { PreferencesProvider } from "@/contexts/preferences-context";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import * as React from "react";
 
@@ -13,7 +14,9 @@ function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="dark"
         disableTransitionOnChange
       >
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <PreferencesProvider>{children}</PreferencesProvider>
+        </AuthProvider>
       </ThemeProvider>
       <Toaster />
     </>

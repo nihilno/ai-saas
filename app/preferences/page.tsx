@@ -1,5 +1,5 @@
 import Title from "@/components/dashboard/title";
-import SelectForm from "@/components/select/select-form";
+import SelectForm from "@/components/preferences/select-form";
 
 export default function SelectPage() {
   return (

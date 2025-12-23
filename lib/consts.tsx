@@ -1,4 +1,4 @@
-import { Folders, Mail, Pause, Settings } from "lucide-react";
+import { Folders, Home, Mail, Pause, Settings, Sliders } from "lucide-react";
 
 export const listItems = [
   {
@@ -27,12 +27,69 @@ export const listItems = [
 ];
 
 export const categoriesChecks = [
-  { name: "Technology", description: "Latest tech news and innovations." },
-  { name: "Business", description: "Business trends and Market updates." },
-  { name: "Sports", description: "Sports news and highlights." },
-  { name: "Entertainment", description: "Movies, TV, and celebrity news." },
-  { name: "Science", description: "Scientific discoveries and research." },
-  { name: "Health", description: "Health and wellness updates." },
-  { name: "Politics", description: "Political news and current events." },
-  { name: "Environment", description: "Climate and environmental news." },
+  {
+    id: "technology",
+    name: "Technology",
+    description: "Latest tech news and innovations.",
+  },
+  {
+    id: "business",
+    name: "Business",
+    description: "Business trends and Market updates.",
+  },
+  { id: "sports", name: "Sports", description: "Sports news and highlights." },
+  {
+    id: "entertainment",
+    name: "Entertainment",
+    description: "Movies, TV, and celebrity news.",
+  },
+  {
+    id: "science",
+    name: "Science",
+    description: "Scientific discoveries and research.",
+  },
+  { id: "health", name: "Health", description: "Health and wellness updates." },
+  {
+    id: "politics",
+    name: "Politics",
+    description: "Political news and current events.",
+  },
+  {
+    id: "environment",
+    name: "Environment",
+    description: "Climate and environmental news.",
+  },
+];
+
+export const frequencyOptions = [
+  {
+    id: "daily",
+    name: "Daily",
+    description: "Every day.",
+  },
+  {
+    id: "weekly",
+    name: "Weekly",
+    description: "Once a week.",
+  },
+  {
+    id: "biweekly",
+    name: "Bi-weekly",
+    description: "Twice a week.",
+  },
+];
+
+export const navLinks = [
+  {
+    href: "/dashboard",
+    icon: (
+      <Home className="hover:text-primary/50 cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-0.5" />
+    ),
+  },
+  {
+    href: "/preferences",
+    icon: (
+      <Sliders className="hover:text-primary/25 cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-0.5" />
+    ),
+  },
 ];

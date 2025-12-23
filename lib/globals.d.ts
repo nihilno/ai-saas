@@ -8,6 +8,14 @@ declare global {
     signOut: () => Promise<void>;
   };
 
+  type PreferencesContextType = {
+    selectedCategory: string[];
+    setSelectedCategory: Dispatch<SetStateAction<string[]>>;
+    selectedFrequency: string;
+    setSelectedFrequency: Dispatch<SetStateAction<string>>;
+    handleCategoryChange: (id: string) => Promise<void>;
+  };
+
   type TitleProps = {
     children: React.ReactNode;
     subtitle: string;
