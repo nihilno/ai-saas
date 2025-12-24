@@ -6,7 +6,15 @@ import { createClient } from "@/lib/supabase/server";
 import { marked } from "marked";
 
 export default inngest.createFunction(
-  { id: "newsletter/scheduled" },
+  {
+    id: "newsletter/scheduled",
+    cancelOn: [
+      {
+        event: "newsletter.schedule.deleted",
+        if: "async.data.user_id == event.data.user_id",
+      },
+    ],
+  },
   { event: "newsletter.schedule" },
 
   // preparing categories based on user choices

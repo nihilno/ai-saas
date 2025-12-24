@@ -1,6 +1,4 @@
-import Footer from "@/components/dashboard/footer";
 import Providers from "@/components/global/providers";
-import Navbar from "@/components/header/navbar";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -29,9 +27,7 @@ export default function RootLayout({
         className={cn(inter.className, "flex min-h-dvh flex-col antialiased")}
       >
         <Providers>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <section className="flex-1">{children}</section>
         </Providers>
       </body>
     </html>

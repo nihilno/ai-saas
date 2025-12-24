@@ -47,7 +47,7 @@ export function AuthForm() {
 
     try {
       if (isSignUp) {
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
           email,
           password,
         });
@@ -59,18 +59,11 @@ export function AuthForm() {
           return;
         }
 
-        if (data.user && !data.session) {
-          toast.warning("Account already exists.", {
-            description:
-              "This email is already registered. Please sign in instead.",
-          });
-          setIsSignUp(false);
-          return;
-        }
-
         toast.success("Account created!", {
           description: "Check your inbox for the confirmation link.",
         });
+        setIsSignUp(false);
+        form.reset();
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,

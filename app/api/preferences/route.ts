@@ -49,7 +49,14 @@ export async function POST(request: NextRequest) {
   const { error: upsertError } = await supabase
     .from("user_preferences")
     .upsert(
-      { user_id: user.id, categories, frequency, email },
+      {
+        user_id: user.id,
+        categories,
+        frequency,
+        email,
+        is_active: true,
+        updated_at: new Date(),
+      },
       { onConflict: "user_id" },
     );
 

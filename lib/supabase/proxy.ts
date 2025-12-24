@@ -44,7 +44,11 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (request.nextUrl.pathname === "/dashboard" && !user) {
+  if (
+    (request.nextUrl.pathname === "/dashboard" ||
+      request.nextUrl.pathname === "/preferences") &&
+    !user
+  ) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth";
     return NextResponse.redirect(url);

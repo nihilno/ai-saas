@@ -11,7 +11,8 @@ function Preferences({
 }) {
   if (!preferences || preferences === undefined) return <Empty />;
 
-  const { is_active, categories, email, frequency, created_at } = preferences;
+  const { is_active, categories, email, frequency, created_at, updated_at } =
+    preferences;
 
   return (
     <Card className="rounded-b-none border-b-0">
@@ -67,7 +68,7 @@ function Preferences({
             <h3 className="font-semibold">Created At</h3>
           </div>
           <p className="text-muted-foreground line-clamp-1 text-sm">
-            {new Date(created_at).toLocaleDateString("pl-PL")}
+            {new Date(updated_at || created_at).toLocaleDateString("pl-PL")}
           </p>
         </div>
       </CardContent>

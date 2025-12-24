@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 function Navbar() {
-  const { user, signOut } = useAuth();
+  const { signOut } = useAuth();
   const { replace } = useRouter();
   const pathname = usePathname();
 
@@ -16,8 +16,6 @@ function Navbar() {
     await signOut();
     replace("/auth");
   }
-
-  if (!user) return null;
 
   return (
     <header className="border-primary bg-background/50 sticky top-0 z-50 border-b border-dashed px-4 backdrop-blur-3xl">
